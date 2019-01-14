@@ -1,27 +1,28 @@
 package personal.studio.manager.backend.restful;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import personal.studio.manager.backend.app.App;
 import personal.studio.manager.backend.app.exception.PositiveBalanceException;
 import personal.studio.manager.backend.model.Class;
 import personal.studio.manager.backend.model.*;
+import personal.studio.manager.backend.restful.error.PositiveBalanceMessage;
 
 import java.security.Principal;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("/resource")
-public class RestfulApiController {
+public class RestfulAPIController {
 
     @Autowired
     private App app;
 
     @RequestMapping(value = "/get/classes", method = RequestMethod.GET)
-    public List<Class> getAllClasses() {
+    public List<Class> getAllClasses(){
         return app.getAllClasses();
     }
 

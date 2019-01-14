@@ -6,7 +6,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-import personal.studio.manager.backend.restful.RestfulApiConfig;
+import personal.studio.manager.backend.restful.RestfulAPIConfig;
 
 @SpringBootApplication//(exclude=DispatcherServletAutoConfiguration.class)
 public class Application {
@@ -22,7 +22,7 @@ public class Application {
     public ServletRegistrationBean foo() {
         DispatcherServlet dispatcherServlet = new DispatcherServlet();
         AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
-        applicationContext.register(RestfulApiConfig.class);
+        applicationContext.register(RestfulAPIConfig.class);
         dispatcherServlet.setApplicationContext(applicationContext);
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(dispatcherServlet, "/restful-api/*");
         servletRegistrationBean.setName("restful-api");

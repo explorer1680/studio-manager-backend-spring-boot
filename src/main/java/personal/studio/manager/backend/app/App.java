@@ -7,12 +7,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import org.springframework.transaction.annotation.Transactional;
 import personal.studio.manager.backend.app.exception.PositiveBalanceException;
 import personal.studio.manager.backend.dao.DAO;
 import personal.studio.manager.backend.model.*;
 import personal.studio.manager.backend.model.Class;
 
 @Component
+@Transactional
 public class App {
 
     @Autowired
@@ -59,6 +61,7 @@ public class App {
         dao.updateStudent(student);
     }
 
+    @Transactional(rollbackFor=PositiveBalanceException.class)
     public void makeTransaction(Transaction transaction) throws PositiveBalanceException {
         for (ClassInfo classInfo : transaction.getClasses()) {//please note, this part should be before the payment part.
             Student student = dao.getStudentById(classInfo.getStudentId());
@@ -98,7 +101,7 @@ public class App {
         }
     }
 
-
+    @Transactional(rollbackFor=PositiveBalanceException.class)
     public void customizedPayment(Integer studentId, LatestPayment latestPayment) throws PositiveBalanceException {
         Student student = dao.getStudentById(studentId);
         Payment previousPayment = student.getLatestPayment();

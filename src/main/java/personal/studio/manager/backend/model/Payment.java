@@ -136,6 +136,13 @@ public class Payment {
         this.comment = comment;
     }
 
+    public YesNo getLatestPayment() {
+        return latestPayment;
+    }
+
+    public void setLatestPayment(YesNo latestPayment) {
+        this.latestPayment = latestPayment;
+    }
 
     @Override
     public String toString() {
