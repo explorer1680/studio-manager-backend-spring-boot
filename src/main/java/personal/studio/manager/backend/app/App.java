@@ -195,11 +195,8 @@ public class App {
     }
 
     private boolean studentCanAcceptNewPayment(Student student) {
-        if (student.getLatestPayment().getTimes() < student.getClassRecords().size()) {//when equal, can't pay
-            return true;
-        } else {
-            return false;
-        }
+        //when equal, can't pay
+        return student.getLatestPayment().getTimes() < student.getClassRecords().size();
     }
 
     private boolean isDuplicatedPayment(Payment latestPayment, PaymentInfo transactionPaymentInfo) {

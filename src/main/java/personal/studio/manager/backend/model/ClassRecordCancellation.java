@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ClassRecordCancellation {
 
-    @JsonProperty(value="class_record_ids")
-    private Integer classRecordIds[];
+    @JsonProperty(value = "class_record_ids")
+    private Integer[] classRecordIds;
 
     public Integer[] getClassRecordIds() {
         return classRecordIds;
