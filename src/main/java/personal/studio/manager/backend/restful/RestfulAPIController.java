@@ -14,6 +14,7 @@ import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/resource")
 public class RestfulAPIController {
@@ -117,4 +118,6 @@ public class RestfulAPIController {
         System.out.println(principal);
         return principal;
     }
+
+
 }
